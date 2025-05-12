@@ -24,12 +24,12 @@ fun CacheDrawScope.Outline(shape: Shape): Outline {
  * Takes an SVG string and returns a [Path]. If [width] and [height] are not provided, then it's
  * assumed that the intrinsic width and height of the path's bounds are in [Dp].
  */
-context(Density)
 fun String.asPath(
+  density: Density,
   width: Dp = Dp.Unspecified,
   height: Dp = Dp.Unspecified,
-): Path {
-  val path = PathParser().parsePathString(this).toPath()
+): Path = with(density) {
+  val path = PathParser().parsePathString(this@asPath).toPath()
   val bounds = path.getBounds()
   val widthPx = width.takeOrElse { bounds.width.dp }.toPx()
   val heightPx = height.takeOrElse { bounds.height.dp }.toPx()

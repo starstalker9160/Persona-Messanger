@@ -20,11 +20,11 @@ fun Modifier.drawConnectingLine(entry1: Entry, entry2: Entry?): Modifier {
 
   return drawWithCache {
     val linePath = Path()
-    val topOffset = TranscriptSizes.getTopDrawingOffset(entry1)
+    val topOffset = TranscriptSizes.getTopDrawingOffset(this, entry1)
     val topLeft = entry1.lineCoordinates.leftPoint + topOffset
     val topRight = entry1.lineCoordinates.rightPoint + topOffset
 
-    val bottomOffset = TranscriptSizes.getBottomDrawingOffset(entry2)
+    val bottomOffset = TranscriptSizes.getBottomDrawingOffset(this, entry2)
     val bottomLeft = entry2.lineCoordinates.leftPoint + bottomOffset
     val bottomRight = entry2.lineCoordinates.rightPoint + bottomOffset
 

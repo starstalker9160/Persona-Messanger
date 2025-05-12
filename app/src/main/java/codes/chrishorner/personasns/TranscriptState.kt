@@ -230,8 +230,7 @@ object TranscriptSizes {
   val MinLineWidth = 44.dp
   val MaxLineWidth = 60.dp
 
-  context(CacheDrawScope)
-  fun getTopDrawingOffset(entry: Entry): Offset {
+  fun getTopDrawingOffset(scope: CacheDrawScope, entry: Entry): Offset = with(scope) {
     return when (entry.message.sender) {
       Sender.Ren -> {
         val horizontalShift = size.width - (RenMessageCenter.x.toPx() * 2f)
@@ -242,8 +241,7 @@ object TranscriptSizes {
     }
   }
 
-  context(CacheDrawScope)
-  fun getBottomDrawingOffset(entry: Entry): Offset {
+  fun getBottomDrawingOffset(scope: CacheDrawScope, entry: Entry): Offset = with(scope) {
     val verticalShift = size.height + EntrySpacing.toPx()
     return when (entry.message.sender) {
       Sender.Ren -> {

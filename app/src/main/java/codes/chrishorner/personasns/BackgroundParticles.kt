@@ -90,34 +90,31 @@ private class ParticlePath(
   val size: Size,
 )
 
-context(Density)
-private fun String.asParticlePath(): ParticlePath {
-  val path = asPath()
+private fun String.asParticlePath(density: Density): ParticlePath {
+  val path = asPath(density)
   val bounds = path.getBounds()
   val size = Size(bounds.width, bounds.height)
   return ParticlePath(path, size)
 }
 
-@Composable
-private fun rememberParticlePaths(season: Season): List<ParticlePath> {
-  return with(LocalDensity.current) {
-    remember(density, season) {
-      when (season) {
-        Season.NONE -> emptyList()
-        Season.SPRING -> listOf(
-          Sakura1.asParticlePath(),
-          Sakura2.asParticlePath(),
-          Sakura3.asParticlePath(),
-          Sakura4.asParticlePath(),
-        )
+@Composable private fun rememberParticlePaths(season: Season): List<ParticlePath> {
+  val density = LocalDensity.current
+  return remember(density, season) {
+    when (season) {
+      Season.NONE -> emptyList()
+      Season.SPRING -> listOf(
+        Sakura1.asParticlePath(density),
+        Sakura2.asParticlePath(density),
+        Sakura3.asParticlePath(density),
+        Sakura4.asParticlePath(density),
+      )
 
-        Season.WINTER -> listOf(
-          Snowflake1.asParticlePath(),
-          Snowflake2.asParticlePath(),
-          Snowflake3.asParticlePath(),
-          Snowflake4.asParticlePath(),
-        )
-      }
+      Season.WINTER -> listOf(
+        Snowflake1.asParticlePath(density),
+        Snowflake2.asParticlePath(density),
+        Snowflake3.asParticlePath(density),
+        Snowflake4.asParticlePath(density),
+      )
     }
   }
 }

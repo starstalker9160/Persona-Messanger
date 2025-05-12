@@ -2,7 +2,6 @@ package codes.chrishorner.personasns
 
 import android.content.res.Resources
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -31,19 +30,17 @@ fun Portraits(senders: ImmutableList<Sender>, modifier: Modifier = Modifier) {
   val resources = LocalContext.current.resources
 
   val portraitDisplayModels = remember(senders, density, resources) {
-    with(density) {
-      with(resources) {
-        // Pick an index at random to have a "dark avatar", where black is rendered behind the
-        // portrait.
-        val darkAvatarIndex = Random.nextInt(senders.size)
-        senders.shuffled().mapIndexed { index, sender ->
-          sender.getDisplayModel(
-            allowHorizontalOffset = index > 0,
-            darkAvatar = darkAvatarIndex == index,
-          )
-        }
+      // Pick an index at random to have a "dark avatar", where black is rendered behind the
+      // portrait.
+      val darkAvatarIndex = Random.nextInt(senders.size)
+      senders.shuffled().mapIndexed { index, sender ->
+        sender.getDisplayModel(
+          allowHorizontalOffset = index > 0,
+          darkAvatar = darkAvatarIndex == index,
+          density = density,
+          resources = resources,
+        )
       }
-    }
   }
 
   Canvas(
@@ -106,11 +103,12 @@ fun Portraits(senders: ImmutableList<Sender>, modifier: Modifier = Modifier) {
   }
 }
 
-context(Density, Resources)
 private fun Sender.getDisplayModel(
   allowHorizontalOffset: Boolean,
   darkAvatar: Boolean,
-): PortraitDisplayModel {
+  density: Density,
+  resources: Resources,
+): PortraitDisplayModel = with(density) {
 
   fun middleOffset(): Float {
     return randomPxBetween(6.dp, 7.dp)
@@ -143,10 +141,10 @@ private fun Sender.getDisplayModel(
   val innerRotation = randomBetween(-2f, 0f)
 
   return PortraitDisplayModel(
-    image = ImageBitmap.imageResource(this@Resources, image),
+    image = ImageBitmap.imageResource(resources, image),
     imageOffset = Offset(
       // Ann's portrait is kind of annoying and looks a bit better when offset to the right.
-      x = if (this@Sender == Sender.Ann) 8.dp.toPx() else 0f,
+      x = if (this@getDisplayModel == Sender.Ann) 8.dp.toPx() else 0f,
       y = 10.dp.toPx(),
     ),
     outerRotation = outerRotation,
