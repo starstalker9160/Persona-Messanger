@@ -1,6 +1,6 @@
 # Persona IM
 
-<img width="30%" src="https://github.com/user-attachments/assets/297cb21b-415f-4c9b-a258-1181c63c1b95" align="right">
+<img width="26%" src="https://github.com/user-attachments/assets/297cb21b-415f-4c9b-a258-1181c63c1b95" align="right">
 
 A reimplementation of the instant messaging app seen in Persona 5 for Android using Compose UI.
 
@@ -17,11 +17,15 @@ All art and character designs in this repository are the property of Atlus Co., 
 
 ### Additional Resources
 
-This app was made for a presentation DroidKaigi 2024. Slides in both English and Japanese can be [found here on Speaker Deck](https://speakerdeck.com/chrishorner/creative-compose-ui). A recording of the presentation is available here on Youtube:
+This app was originally made for a presentation at DroidKaigi 2024, with a slightly expanded version given at KotlinConf 2025. For native English speakers the KotlinConf version is probably a more enjoyable watch since I didn't have to slow down for interpretation.
+
+Slides in both English and Japanese can be [found here on Speaker Deck](https://speakerdeck.com/chrishorner/creative-compose-ui). The slightly longer KotlinConf slides in English [are available here](https://speakerdeck.com/chrishorner/creative-uis-with-compose-kotlinconf-2025). Recordings are up on YouTube:
 
 ---
 
-[![YouTube](https://github.com/user-attachments/assets/c57e6517-3cfd-4f6d-abb9-7b4e1168d1ef)](https://www.youtube.com/watch?v=eWDthP0oUKc)
+| DroidKaigi 2024 | KotlinConf 2025 |
+| --- | --- |
+| [![YouTube](https://github.com/user-attachments/assets/9fd799db-2bae-4732-b19f-eb3e2d24179b)](https://www.youtube.com/watch?v=eWDthP0oUKc) | [![YouTube](https://github.com/user-attachments/assets/0e903e42-cdbf-4e2f-ba89-6835559564c5)](https://www.youtube.com/watch?v=9KdP2idt6LE) |
 
 ### Video
 
