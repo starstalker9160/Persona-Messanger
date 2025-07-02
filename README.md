@@ -1,6 +1,6 @@
 # Persona IM
 
-<img width="26%" src="https://github.com/user-attachments/assets/297cb21b-415f-4c9b-a258-1181c63c1b95" align="right">
+<img width="30%" src="https://github.com/user-attachments/assets/297cb21b-415f-4c9b-a258-1181c63c1b95" align="right">
 
 A reimplementation of the instant messaging app seen in Persona 5 for Android using Compose UI.
 
